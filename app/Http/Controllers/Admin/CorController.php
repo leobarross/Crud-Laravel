@@ -28,7 +28,8 @@ class CorController extends Controller
         $cor = new Cor;
         $cor->create($corData);
 
-        print 'Cor Cadastrada com sucesso!';
+        flash('Cor cadastrada com sucesso')->success();
+        return redirect()->route('cores.index');
     }
 
     public function edit(Cor $cor)
@@ -45,7 +46,8 @@ class CorController extends Controller
         $cor = Cor::findOrFail($codigo);
         $cor->update($corData);
 
-        print 'Cor Atualizada com sucesso!';
+        flash('Cor Atualizada com sucesso')->success();
+        return redirect()->route('cores.edit', ['cor' => $codigo]);
     }
 
     public function delete($codigo)
@@ -54,6 +56,7 @@ class CorController extends Controller
         $cor = Cor::findOrFail($codigo);
         $cor->delete();
 
-        print 'Cor Removida com sucesso!';
+        flash('Cor Removida com sucesso')->success();
+        return redirect()->route('cores.index');
     }
 }

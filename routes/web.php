@@ -18,13 +18,27 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-  Route::prefix('admin')->group(function () {
-    Route::get('cores', 'Admin\\CorController@index')->name('cores.index');
-    Route::get('cores/new', 'Admin\\CorController@new')->name('cores.new');
-    Route::post('cores/store', 'Admin\\CorController@store')->name('cores.store');
-    Route::get('cores/edit/{cor}', 'Admin\\CorController@edit')->name('cores.edit');
-    Route::post('cores/update/{codigo}', 'Admin\\CorController@update')->name('cores.update');
-    Route::get('cores/remove/{codigo}', 'Admin\\CorController@delete')->name('cores.delete');
+
+  Route::prefix('admin')->namespace('Admin')->group(function () {
+
+    Route::prefix('cores')->group(function(){
+      Route::get('/', 'CorController@index')->name('cores.index');
+      Route::get('/new', 'CorController@new')->name('cores.new');
+      Route::post('/store', 'CorController@store')->name('cores.store');
+      Route::get('/edit/{cor}', 'CorController@edit')->name('cores.edit');
+      Route::post('/update/{codigo}', 'CorController@update')->name('cores.update');
+      Route::get('/remove/{codigo}', 'CorController@delete')->name('cores.delete');
+    });
+
+    Route::prefix('users')->group(function(){
+      Route::get('/', 'UserController@index')->name('user.index');
+      Route::get('/new', 'UserController@new')->name('user.new');
+      Route::post('/store', 'UserController@store')->name('user.store');
+      Route::get('/edit/{user}', 'UserController@edit')->name('user.edit');
+      Route::post('/update/{id}', 'UserController@update')->name('user.update');
+      Route::get('/remove/{id}', 'UserController@delete')->name('user.remove');
+    });
+    
   });
 
 });
