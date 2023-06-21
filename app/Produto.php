@@ -10,8 +10,10 @@ class Produto extends Model
 
     protected $primaryKey = "codigo";
     
-    protected $fillable = ['codigo', 'descricao', 'resumo', 'preco', 'created_at', 'updated_at',
-    'cod_cor','cod_categoria'];  
+    protected $fillable = [
+    'codigo', 'descricao', 'resumo', 'preco', 
+    'created_at', 'updated_at', 'cod_cor','cod_categoria'
+    ];  
 
     public function cores()
     {

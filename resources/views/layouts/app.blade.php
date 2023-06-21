@@ -34,6 +34,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li>
+                            <a href="{{route('produtos.index')}}" class="nav-link">Produtos</a>
+                        </li>
+                        <li>
+                             <a href="{{route('cores.index')}}" class="nav-link">Cores</a>
+                        </li>
+                        <li>
+                             <a href="{{route('categorias.index')}}" class="nav-link">Categorias</a>
+                        </li>
+
+                        <li>
+                             <a href="{{route('user.index')}}" class="nav-link">Usúarios</a>
+                        </li>
 
                     </ul>
 
@@ -57,7 +70,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Sair') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

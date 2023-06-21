@@ -12,6 +12,6 @@ class Cor extends Model
 
     public function produtos()
     {
-        return $this->hasMany(Produto::class);
-    }
+        return $this->hasMany(Produto::class, 'cod_cor', 'codigo');
+    } 
 }

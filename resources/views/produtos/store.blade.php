@@ -28,7 +28,7 @@
         </p>
 
         <p class="form-group">
-            <label>Preço de Venda</label>
+            <label>Preço</label>
             <input type="text" name="preco" value="{{old('preco')}}" class="form-control @if($errors->has('preco')) is-invalid @endif">
             @if($errors->has('preco'))
             <span class="invalid-feedback">
@@ -39,7 +39,7 @@
 
         
         <p class="form-group">
-            <label>Cores</label>
+            <label>Cor</label>
             <select name="cod_cor" class="form-control">
                 <option value="">Selecione uma cor</option>
                 @foreach($cores as $cor)
@@ -47,15 +47,15 @@
                 @endforeach
             </select>
             
-            @if($errors->has('preco'))
+            @if($errors->has('cod_cor'))
             <span class="invalid-feedback">
-                <strong>{{$errors->first('preco')}}</strong>
+                <strong>{{$errors->first('cod_cor')}}</strong>
             </span>
             @endif
         </p>
 
         <p class="form-group">
-            <label>Categorias</label>
+            <label>Categoria</label>
             <select name="cod_categoria" class="form-control">
                 <option value="">Selecione uma categoria</option>
                 @foreach($categorias as $cat)
@@ -63,9 +63,9 @@
                 @endforeach
             </select>
 
-            @if($errors->has('preco'))
+            @if($errors->has('cod_categoria'))
             <span class="invalid-feedback">
-                <strong>{{$errors->first('preco')}}</strong>
+                <strong>{{$errors->first('cod_categoria')}}</strong>
             </span>
             @endif
         </p>

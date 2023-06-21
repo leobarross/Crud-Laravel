@@ -18,14 +18,14 @@
         <tbody>
             @foreach($produtos as $p)
             <tr>
-                <td>{{$p->produtos}}</td>
+                <td>{{$p->codigo}}</td>
                 <td>{{$p->descricao}}</td>
                 <td>{{$p->resumo}}</td>
                 <td>{{$p->preco}}</td>
                 <td>{{$p->created_at}}</td>
                 <td>
-                    <a href="{{route('produtos.edit', ['cor' => $p->produtos])}}" class="btn btn-primary">Editar</a>
-                    <a href="{{route('produtos.delete', ['produtos' => $p->produtos])}}" class="btn btn-danger">Excluir</a>
+                    <a href="{{route('produtos.edit', ['produto' => $p->codigo])}}" class="btn btn-primary">Editar</a>
+                    <a href="{{route('produtos.delete', ['codigo' => $p->codigo])}}" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
             @endforeach

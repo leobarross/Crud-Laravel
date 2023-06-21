@@ -20,7 +20,7 @@ class ProdutoController extends Controller
     {
         $cores = Cor::all(['codigo', 'descricao']);
         $categorias = Categoria::all(['codigo', 'descricao']);
-        return view('produtos.store', compact('categorias','cores'));
+        return view('produtos.store', compact('categorias', 'cores'));
     }
 
     public function store(ProdutoRequest $request)
@@ -28,12 +28,14 @@ class ProdutoController extends Controller
         $produtoData = $request->all();
 
         $request->validated();
-        
-        $cores = Cor::find($produtoData['cod_cor']);
-        $cores->produtos()->create($produtoData);
 
+        $cores = Cor::find($produtoData['cod_cor']);
         $categorias = Categoria::find($produtoData['cod_categoria']);
+        $cores->produtos();
         $categorias->produtos()->create($produtoData);
+
+
+
 
         flash('Produto cadastrado com sucesso')->success();
         return redirect()->route('produtos.index');
@@ -41,7 +43,9 @@ class ProdutoController extends Controller
 
     public function edit(Produto $produto)
     {
-        return view('produtos.edit', compact('Produto'));
+        $cores = Cor::all(['codigo', 'descricao']);
+        $categorias = Categoria::all(['codigo', 'descricao']);
+        return view('produtos.edit', compact('produto', 'categorias', 'cores'));
     }
 
     public function update(ProdutoRequest $request, $codigo)
@@ -59,11 +63,11 @@ class ProdutoController extends Controller
 
     public function delete($codigo)
     {
-    
+
         $produto = Produto::findOrFail($codigo);
         $produto->delete();
 
-        flash('Produto Removida com sucesso')->success();
+        flash('Produto Removido com sucesso')->success();
         return redirect()->route('produtos.index');
     }
 }
