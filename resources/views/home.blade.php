@@ -2,22 +2,17 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    Você está logado!
-                </div>
-            </div>
+    <h1>Produtos </h1>
+    <div class="row">
+        @foreach($produtos as $p)
+        <div class="col-4">
+          <h2>{{$p->descricao}}</h2>
+          <p>
+            {{$p->resumo}}
+          </p>
         </div>
+        @endforeach
     </div>
+    {{$produtos->links()}}
 </div>
 @endsection

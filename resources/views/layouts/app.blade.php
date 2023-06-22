@@ -33,6 +33,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    @auth
                     <ul class="navbar-nav mr-auto">
                         <li>
                             <a href="{{route('produtos.index')}}" class="nav-link">Produtos</a>
@@ -49,7 +50,7 @@
                         </li>
 
                     </ul>
-
+                    @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
