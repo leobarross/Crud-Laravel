@@ -17,11 +17,11 @@ class Produto extends Model
 
     public function cores()
     {
-        return $this->belongsTo(Cor::class);
+        return $this->belongsTo(Cor::class, 'codigo');
     }
 
     public function categorias()
     {
-        return $this->belongsTo(Categoria::class);
+        return $this->belongsTo(Categoria::class, 'codigo');
     }
 }

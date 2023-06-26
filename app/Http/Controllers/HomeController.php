@@ -27,4 +27,9 @@ class HomeController extends Controller
         $produtos = Produto::paginate(10);
         return view('home', compact('produtos'));
     }
+
+    public function get(Produto $codigo)
+    {
+        return view('single', compact('codigo'));
+    }
 }
