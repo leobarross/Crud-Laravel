@@ -2,21 +2,38 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    < class="row">
         <div class="col-12">
             <h2>{{$codigo->descricao}}</h2>
             <p>{{$codigo->resumo}}</p>
             <hr>
         </div>
         <div class="col-12">
-            Cor:
             <ul class="list-group">
                 <li class="list-group-item">
-                {{$codigo->cores->descricao}} <br>
-                R$:{{number_format($codigo->preco, '2',',', '.')}}
+                    Cor: {{$codigo->cores->descricao}} <br>
+                    Categoria: {{$codigo->categorias->descricao}} <br>
+                    R$: {{number_format($codigo->preco, '2',',', '.')}}
                 </li>
             </ul>
         </div>
+        <div class="col-12">
+            <h2>Fotos</h2>
+            <hr>
+        </div>
+        <div class="row">
+        @if($codigo->fotos()->count())
+                @foreach($codigo->fotos as $foto)
+            <div class="col-4">
+                <img src="{{asset('/images/' . $foto->foto)}}" alt="" class="img-fluid">
+            </div>
+                @endforeach
+        @else
+                <div class="col-12">
+                    <span class="alert alert-warning">Sem Fotos para Este Produto</span>
+                </div>
+            @endif        
+        </div>    
     </div>
 </div>
 @endsection

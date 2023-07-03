@@ -18,6 +18,7 @@
         </p>
 
         <input type="submit" value="Cadastrar" class="btn btn-success btn-lg">
+        <a href="{{route('categorias.index')}}" class="btn btn-secondary btn-lg">Voltar</a>
 
     </form>
 </div>

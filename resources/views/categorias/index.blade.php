@@ -18,7 +18,7 @@
             <tr>
                 <td>{{$c->codigo}}</td>
                 <td>{{$c->descricao}}</td>
-                <td>{{$c->created_at}}</td>
+                <td>{{$c->created_at->format('d/m/y H:i:s')}}</td>
                 <td>
                     <a href="{{route('categorias.edit', ['cor' => $c->codigo])}}" class="btn btn-primary">Editar</a>
                     <a href="{{route('categorias.delete', ['codigo' => $c->codigo])}}" class="btn btn-danger">Excluir</a>

@@ -29,13 +29,8 @@ class ProdutoController extends Controller
 
         $request->validated();
 
-        $cores = Cor::find($produtoData['cod_cor']);
-        $categorias = Categoria::find($produtoData['cod_categoria']);
-        $cores->produtos();
-        $categorias->produtos()->create($produtoData);
-
-
-
+        $produto = new Produto;
+        $produto->create($produtoData);
 
         flash('Produto cadastrado com sucesso')->success();
         return redirect()->route('produtos.index');

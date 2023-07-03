@@ -24,4 +24,9 @@ class Produto extends Model
     {
         return $this->belongsTo(Categoria::class, 'codigo');
     }
+
+    public function fotos()
+    {
+        return $this->hasMany(Foto_Produto::class, 'codproduto');
+    }
 }

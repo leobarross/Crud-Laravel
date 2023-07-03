@@ -8,7 +8,7 @@
     <form action="{{route('produtos.store')}}" method="post">
         {{csrf_field()}}
         <p class="form-group">
-            <label>Descrição do Produto</label>
+            <label>Descrição</label> <br>
             <input type="text" name="descricao" value="{{old('descricao')}}" class="form-control @if($errors->has('descricao')) is-invalid @endif">
             @if($errors->has('descricao'))
             <span class="invalid-feedback">
@@ -18,8 +18,8 @@
         </p>
 
         <p class="form-group">
-            <label>Resumo</label>
-            <input type="text" name="resumo" value="{{old('resumo')}}" class="form-control @if($errors->has('resumo')) is-invalid @endif">
+            <label>Resumo</label> <br>
+            <textarea name="resumo" id="" cols="50" rows="5">{{old('resumo')}}</textarea> <br>
             @if($errors->has('resumo'))
             <span class="invalid-feedback">
                 <strong>{{$errors->first('resumo')}}</strong>
@@ -28,8 +28,8 @@
         </p>
 
         <p class="form-group">
-            <label>Preço</label>
-            <input type="text" name="preco" value="{{old('preco')}}" class="form-control @if($errors->has('preco')) is-invalid @endif">
+            <label>Preço</label> <br>
+            <input type="text" name="preco" value="{{old('preco')}}" class="col-sm-4 col-form-label @if($errors->has('preco')) is-invalid @endif">
             @if($errors->has('preco'))
             <span class="invalid-feedback">
                 <strong>{{$errors->first('preco')}}</strong>
@@ -71,6 +71,7 @@
         </p>
 
         <input type="submit" value="Cadastrar" class="btn btn-success btn-lg">
+        <a href="{{route('produtos.index')}}" class="btn btn-secondary btn-lg">Voltar</a>
 
     </form>
 </div>

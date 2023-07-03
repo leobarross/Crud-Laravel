@@ -13,24 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/produto/{codigo}', 'HomeController@get')->name('home.single');
-
-
 Route::group(['middleware' => ['auth']], function () {
+
+  Route::get('/', 'HomeController@index')->name('home');
+  Route::get('/produto/{codigo}', 'HomeController@get')->name('home.single');
 
   Route::prefix('admin')->namespace('Admin')->group(function () {
 
-    Route::prefix('produtos')->group(function(){
+    Route::prefix('produtos')->group(function () {
       Route::get('/', 'ProdutoController@index')->name('produtos.index');
       Route::get('/new', 'ProdutoController@new')->name('produtos.new');
       Route::post('/store', 'ProdutoController@store')->name('produtos.store');
       Route::get('/edit/{produto}', 'ProdutoController@edit')->name('produtos.edit');
       Route::post('/update/{codigo}', 'ProdutoController@update')->name('produtos.update');
       Route::get('/remove/{codigo}', 'ProdutoController@delete')->name('produtos.delete');
+
+      Route::get('/fotos/{codigo}', 'ProdutoFotoController@index')->name('produtos.fotos');
+      Route::post('/fotos/{codigo}', 'ProdutoFotoController@save')->name('produtos.fotos.save');
     });
 
-    Route::prefix('cores')->group(function(){
+    Route::prefix('cores')->group(function () {
       Route::get('/', 'CorController@index')->name('cores.index');
       Route::get('/new', 'CorController@new')->name('cores.new');
       Route::post('/store', 'CorController@store')->name('cores.store');
@@ -39,7 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
       Route::get('/remove/{codigo}', 'CorController@delete')->name('cores.delete');
     });
 
-    Route::prefix('categorias')->group(function(){
+    Route::prefix('categorias')->group(function () {
       Route::get('/', 'CategoriaController@index')->name('categorias.index');
       Route::get('/new', 'CategoriaController@new')->name('categorias.new');
       Route::post('/store', 'CategoriaController@store')->name('categorias.store');
@@ -48,7 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
       Route::get('/remove/{codigo}', 'CategoriaController@delete')->name('categorias.delete');
     });
 
-    Route::prefix('users')->group(function(){
+    Route::prefix('users')->group(function () {
       Route::get('/', 'UserController@index')->name('user.index');
       Route::get('/new', 'UserController@new')->name('user.new');
       Route::post('/store', 'UserController@store')->name('user.store');
@@ -56,12 +58,8 @@ Route::group(['middleware' => ['auth']], function () {
       Route::post('/update/{id}', 'UserController@update')->name('user.update');
       Route::get('/remove/{id}', 'UserController@delete')->name('user.remove');
     });
-    
   });
-
 });
 
 
 Auth::routes();
-
-

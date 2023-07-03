@@ -7,6 +7,7 @@
     <div class="row">
         @foreach($produtos as $p)
         <div class="col-4">
+            <img src="{{asset('/images/' . $p->fotos()->first()->foto)}}" alt="" class="img-fluid">
           <h2>
             <a href="{{route('home.single',['codigo' => $p->codigo])}}">{{$p->descricao}}</a>
           </h2>

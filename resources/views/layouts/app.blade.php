@@ -25,16 +25,16 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Laravel2') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="justify-content-end collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     @auth
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav">
                         <li>
                             <a href="{{route('produtos.index')}}" class="nav-link">Produtos</a>
                         </li>
@@ -52,14 +52,14 @@
                     </ul>
                     @endauth
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Cadastre-se') }}</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
